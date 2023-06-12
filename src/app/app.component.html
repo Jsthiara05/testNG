@@ -1,0 +1,33 @@
+<hello name="{{ name }}"></hello>
+<p>How to check if a value in a form control is going to change</p>
+<form [formGroup]="form">
+  <input
+    type="radio"
+    name="preferredContactMethod"
+    value="name"
+    formControlName="preferredContactMethod"
+  />
+  <label for="first">Add Validation on Name</label><br />
+  <input
+    type="radio"
+    name="preferredContactMethod"
+    value="subject"
+    formControlName="preferredContactMethod"
+  />
+  <label for="second">Add validation on Subject</label>
+  <div class="m-12">
+    <label for="name" class="full-width">Name : </label>
+    <input type="text" name="name" id="name" formControlName="name" required />
+    <div class="error" *ngIf="form.get('name').hasError('required')">
+      Name is required
+    </div>
+  </div>
+  <div class="m-12">
+    <label for="subject">Subject : </label>
+    <input type="text" id="subject" name="subject" formControlName="subject" />
+    <div class="error" *ngIf="form.get('subject').hasError('required')">
+      Subject is required
+    </div>
+  </div>
+  <button type="submit" (click)="submitForm()">Submit</button>
+</form>
